@@ -24,4 +24,9 @@ class Usuario {
 		edad = hoy.year - fechaDeNacimiento.year
 		return edad
 	}
+	
+	def int frecuenciaCardiacaMaxima() {
+		return 220 - this.calcularEdad
+	}
+	
 }
