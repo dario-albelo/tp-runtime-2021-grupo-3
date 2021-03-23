@@ -2,14 +2,14 @@ package tp_algo2
 
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.time.LocalDate
+import java.time.Period
 
 @Accessors
 class Usuario {
 	
 	String nombreYApellido
 	String username
-	public var LocalDate fechaDeNacimiento
-	int edad
+	var LocalDate fechaDeNacimiento
 	
 	new(String nombreYApellido, String username, LocalDate fechaDeNacimiento){
 		this.nombreYApellido = nombreYApellido
@@ -19,14 +19,13 @@ class Usuario {
 	
 	new(){}
 	
-	def int calcularEdad(){
-		val LocalDate hoy = LocalDate.now
-		edad = hoy.year - fechaDeNacimiento.year
-		return edad
+	def int getEdad(){
+		Period.between(fechaDeNacimiento, LocalDate.now).years
+		
 	}
 	
 	def int frecuenciaCardiacaMaxima() {
-		return 220 - this.calcularEdad
+		return 220 - this.edad
 	}
 	
 }
